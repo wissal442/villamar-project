@@ -159,3 +159,88 @@
 .setting-item textarea {
     min-height: 100px;
 }
+/* admin/assets/css/admin.css */
+
+/* Calendrier */
+.calendar-management {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+#calendar {
+    height: 600px;
+    margin-bottom: 20px;
+}
+
+.fc-event {
+    cursor: pointer;
+}
+
+/* Réservations */
+.reservations-table td:nth-child(4),
+.reservations-table td:nth-child(5) {
+    white-space: nowrap;
+}
+
+/* Paiements */
+.payments-table th:nth-child(4),
+.payments-table td:nth-child(4),
+.payments-table th:nth-child(7),
+.payments-table td:nth-child(7) {
+    text-align: right;
+}
+
+/* user/assets/css/user.css */
+
+/* Tableau de bord utilisateur */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.recent-activity ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-activity li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.recent-activity .date {
+    color: #777;
+    font-size: 0.9em;
+}
+
+.quick-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
