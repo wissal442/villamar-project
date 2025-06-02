@@ -1,0 +1,54 @@
+:root {
+    --primary: #4a89dc;
+    --secondary: #ff7e33;
+    --light: #f5f7fa;
+    --text: #333;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--light);
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.btn-gradient {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white !important;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+/* Ajoutez ceci à votre fichier CSS */
+.country-flag {
+    width: 20px;
+    height: 15px;
+    object-fit: cover;
+    margin-right: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.country-selector .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.search-box .form-select {
+    background-position: right 10px center;
+}

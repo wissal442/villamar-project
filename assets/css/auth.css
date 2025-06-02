@@ -1,0 +1,130 @@
+/* Structure de base */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #F0F1C5;
+    padding: 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+}
+
+/* En-tête */
+.auth-header {
+    background: linear-gradient(135deg, #6F826A, #BF9264);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.auth-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Corps du formulaire */
+.auth-body {
+    padding: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #BF9264;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-input:focus {
+    border-color: #6F826A;
+    box-shadow: 0 0 0 3px rgba(107, 130, 106, 0.1);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6F826A;
+    cursor: pointer;
+}
+
+/* Bouton */
+.btn-auth {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #6F826A, #BF9264);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-auth:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Liens */
+.auth-links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.auth-links a {
+    color: #6F826A;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* Messages d'erreur */
+.alert-error {
+    background: #FFEBEE;
+    color: #C62828;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    border-left: 3px solid #C62828;
+}
