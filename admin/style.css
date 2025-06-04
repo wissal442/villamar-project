@@ -1,0 +1,313 @@
+/* Gestion des médias */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.media-item {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+}
+
+.media-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.media-info {
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+.media-info p {
+    margin: 0.25rem 0;
+}
+
+/* Journal d'activité */
+.filters {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.filter-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto auto;
+    gap: 1rem;
+    align-items: end;
+}
+
+.btn-filter, .btn-reset {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-filter {
+    background: #3498db;
+    color: white;
+}
+
+.btn-reset {
+    background: #e2e8f0;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.logs-table th {
+    text-align: left;
+    padding: 1rem;
+    background: #f1f5f9;
+    position: sticky;
+    top: 0;
+}
+
+.logs-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Paramètres */
+.settings-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.form-section h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+/* Formulaires de réservation */
+.reservation-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Détails contact */
+.contact-details {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.message-content {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    white-space: pre-wrap;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-reply {
+    background: #3498db;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-back {
+    background: #e2e8f0;
+    color: #333;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .reservation-form,
+    .contact-details {
+        padding: 1rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+}
+/* Upload multiple */
+.upload-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.btn-upload {
+    background: #4CAF50;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+/* Backup */
+.backup-confirmation {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+/* Tableaux améliorés */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.data-table th {
+    background: #2c3e50;
+    color: white;
+    padding: 0.75rem;
+    text-align: left;
+    position: sticky;
+    top: 0;
+}
+
+.data-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive tables */
+@media (max-width: 768px) {
+    .data-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+/* Notifications */
+.notification-bell {
+    position: relative;
+    cursor: pointer;
+}
+
+.notification-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 300px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
+
+.notification-bell:hover .notification-dropdown {
+    display: block;
+}
+
+.notification-item {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.notification-item.unread {
+    background: #f8f9fa;
+    font-weight: 500;
+}
+
+.notification-item small {
+    display: block;
+    color: #999;
+    font-size: 0.8em;
+}
+
+/* Audit */
+.audit-filters {
+    background: #f5f7fa;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.audit-table {
+    width: 100%;
+    font-size: 0.9em;
+}
+
+.audit-table th {
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+}
+
+.audit-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .notification-dropdown {
+        width: 250px;
+        right: -50px;
+    }
+    
+    .audit-filters .form-group {
+        margin-bottom: 10px;
+    }
+}

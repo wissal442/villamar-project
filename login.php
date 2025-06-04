@@ -1,3 +1,38 @@
+<?php
+session_start();
+require_once 'includes/db.php';
+
+$error = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+
+    if (!empty($email) && !empty($password)) {
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['user_role'] = $user['role'];
+            $_SESSION['logged_in'] = true;
+
+            // Journalisation
+            $pdo->prepare("INSERT INTO activity_logs (user_id, action, ip_address) VALUES (?, ?, ?)")
+               ->execute([$user['id'], "Connexion réussie", $_SERVER['REMOTE_ADDR']]);
+
+            header('Location: ' . ($user['role'] === 'admin' ? 'admin/dashboard.php' : 'user/dashboard.php'));
+            exit;
+        } else {
+            $error = "Identifiants incorrects";
+        }
+    } else {
+        $error = "Veuillez remplir tous les champs";
+    }
+}
+?>
+
 <?php include 'includes/header.php'; ?>
 
 <div class="auth-container">
@@ -17,19 +52,19 @@
                     <!-- Corps du formulaire -->
                     <div class="auth-body">
                         <!-- Message d'erreur -->
-                        <?php if (isset($_GET['error'])): ?>
+                        <?php if ($error): ?>
                             <div class="alert alert-danger text-center">
-                                <?= htmlspecialchars($_GET['error']) ?>
+                                <?= htmlspecialchars($error) ?>
                             </div>
                         <?php endif; ?>
 
-                        <form method="POST" action="includes/auth_functions.php" class="needs-validation" novalidate>
+                        <form method="POST" action="" class="needs-validation" novalidate>
                             <!-- Email -->
                             <div class="mb-4 input-field">
                                 <div class="input-group">
                                     <i class="fas fa-at input-icon"></i>
                                     <input type="email" class="form-control" name="email" placeholder="Adresse email" required
-                                        value="<?= isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '' ?>">
+                                        value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
                                     <div class="invalid-feedback">Veuillez saisir un email valide</div>
                                 </div>
                                 <div class="input-underline"></div>
@@ -311,8 +346,6 @@
 }
 </style>
 
-
-
 <script>
 function togglePassword() {
     const passwordInput = document.getElementById('password');
@@ -342,3 +375,4 @@ function togglePassword() {
     }, false);
 })();
 </script>
+

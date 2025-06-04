@@ -1,25 +1,49 @@
+<link rel="stylesheet" href="assets/css/user.css">
+
 <?php
-require_once __DIR__.'db.php';
-require_once __DIR__.'auth_check.php';
+require_once __DIR__.'/../includes/db.php';
+require_once __DIR__.'/../includes/auth_check.php';
 
 $userId = $_SESSION['user_id'];
 $pdo = Database::getInstance();
 
 // Statistiques utilisateur
+// Annonces
+$stmt = $pdo->prepare("SELECT COUNT(*) FROM annonces WHERE user_id = ?");
+$stmt->execute([$userId]);
+$annonces = $stmt->fetchColumn();
+
+// Réservations
+$stmt = $pdo->prepare("SELECT COUNT(*) FROM reservations WHERE user_id = ?");
+$stmt->execute([$userId]);
+$reservations = $stmt->fetchColumn();
+
+// Favoris
+$stmt = $pdo->prepare("SELECT COUNT(*) FROM favorites WHERE user_id = ?");
+$stmt->execute([$userId]);
+$favoris = $stmt->fetchColumn();
+
+// Messages
+$stmt = $pdo->prepare("SELECT COUNT(*) FROM contacts WHERE email = (SELECT email FROM users WHERE id = ?)");
+$stmt->execute([$userId]);
+$messages = $stmt->fetchColumn();
+
 $stats = [
-    'annonces' => $pdo->prepare("SELECT COUNT(*) FROM annonces WHERE user_id = ?")->execute([$userId])->fetchColumn(),
-    'reservations' => $pdo->prepare("SELECT COUNT(*) FROM reservations WHERE user_id = ?")->execute([$userId])->fetchColumn(),
-    'favoris' => $pdo->prepare("SELECT COUNT(*) FROM favorites WHERE user_id = ?")->execute([$userId])->fetchColumn(),
-    'messages' => $pdo->prepare("SELECT COUNT(*) FROM contacts WHERE email = (SELECT email FROM users WHERE id = ?)")->execute([$userId])->fetchColumn()
+    'annonces' => $annonces,
+    'reservations' => $reservations,
+    'favoris' => $favoris,
+    'messages' => $messages
 ];
 
 // Dernières activités
-$activities = $pdo->prepare("
+$stmt = $pdo->prepare("
     (SELECT 'annonce' as type, id, titre, created_at FROM annonces WHERE user_id = ? ORDER BY created_at DESC LIMIT 3)
     UNION
     (SELECT 'reservation' as type, id, CONCAT('Réservation #', id) as titre, created_at FROM reservations WHERE user_id = ? ORDER BY created_at DESC LIMIT 3)
     ORDER BY created_at DESC LIMIT 5
-")->execute([$userId, $userId])->fetchAll();
+");
+$stmt->execute([$userId, $userId]);
+$activities = $stmt->fetchAll();
 ?>
 
 <div class="user-dashboard">

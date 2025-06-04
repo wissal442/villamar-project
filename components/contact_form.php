@@ -1,4 +1,3 @@
-<!-- components/contact_form.php -->
 <div class="card mt-4">
     <div class="card-header bg-primary text-white">
         <h5><i class="fas fa-envelope me-2"></i>Contacter l'annonceur</h5>

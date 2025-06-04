@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "aos": "^2.3.4",
+    "framer-motion": "^12.15.0",
+    "react-type-animation": "^3.2.0",
+    "swiper": "^11.2.8"
+  }
+}

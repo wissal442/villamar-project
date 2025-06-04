@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'db.php';
-require_once __DIR__.'auth_check.php';
+require_once __DIR__.'/../../includes/db.php';
+require_once __DIR__.'/../../includes/auth_check.php';
 
 $adId = $_GET['id'] ?? null;
 if (!$adId) {
